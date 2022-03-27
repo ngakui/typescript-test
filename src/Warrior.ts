@@ -1,22 +1,26 @@
 export class Warrior {
+    
     hp:number
     speed: number
     name: string
     private readonly damage:number = 5
+    private protectCount:number = 0
 
     getHp():number {
         return this.hp
     }
 
     setHp(hp:number):boolean{
-        if(hp <= 0)
+        if(hp < 0){
+            this.hp = 0
             return false
+        }
         this.hp = hp
         return true
     }
 
     getSpeed():number {
-        return this.hp
+        return this.speed
     }
 
     setSpeed(speed:number):boolean{
@@ -35,20 +39,22 @@ export class Warrior {
         return this.name
     }
 
+    attack(warrior: Warrior):void{
+        warrior.setHp(warrior.getHp() - this.damage);
+    }
+
+    specialAttack(warrior: Warrior):void{
+        const impact = Math.floor(this.getSpeed()/3)*this.damage; 
+        warrior.setHp(warrior.getHp() - impact);
+    }
+
+    protect():boolean{
+        this.protectCount += 1
+        if (this.protectCount === 4) {
+            this.protectCount = 0
+            return false
+        }
+        return true
+    }
+
 }
-
-
-
-
-
-// interface Warrior {
-//     hp:number
-//     speed: number
-//     name: string
-
-//     getHp():number
-//     setHp(hp:number):void
-
-//     getHp():number
-//     setHp(hp:number):void
-// }

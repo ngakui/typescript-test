@@ -9,8 +9,8 @@ describe('Create Warrior', ()=>{
     it('can\'t receive hp < 0', ()=>{
         expect(new Warrior().setHp(-1)).toBe(false)
     })
-    it('can\'t receive hp == 0', ()=>{
-        expect(new Warrior().setHp(0)).toBe(false)
+    it('can receive hp == 0', ()=>{
+        expect(new Warrior().setHp(0)).toBe(true)
     })
 
     //Verification test on Warrior's speed property.
@@ -35,14 +35,93 @@ describe('Create Warrior', ()=>{
 
 describe('Warrior functions', ()=>{
     it('can attack', ()=>{
+        const spiderman = new Warrior();
+        const batman = new Warrior();
+
+        spiderman.setHp(100);
+        spiderman.setName("SPiderman");
+        spiderman.setSpeed(20);
+
+        batman.setHp(100);
+        batman.setName("Batman");
+        batman.setSpeed(15);
+
+        spiderman.attack(batman);
         
+        expect(batman.getHp()).toEqual(95);
+    })
+
+    it('can die', ()=>{
+        const spiderman = new Warrior();
+        const batman = new Warrior();
+
+        spiderman.setHp(100);
+        spiderman.setName("SPiderman");
+        spiderman.setSpeed(20);
+
+        batman.setHp(103);
+        batman.setName("Batman");
+        batman.setSpeed(15);
+
+        while (batman.getHp() > 0) {
+            
+            spiderman.attack(batman);
+        }
+        
+        expect(batman.getHp()).toEqual(0);
+    })
+
+    it('Can attack with Speed', ()=>{
+        const spiderman = new Warrior();
+        const batman = new Warrior();
+
+        spiderman.setHp(100);
+        spiderman.setName("SPiderman");
+        spiderman.setSpeed(20);
+
+        batman.setHp(103);
+        batman.setName("Batman");
+        batman.setSpeed(15);
+
+        batman.specialAttack(spiderman);
+        
+        expect(spiderman.getHp()).toEqual(75);
+    })
+
+    it('can protect', ()=>{
+        const spiderman = new Warrior();
+        const batman = new Warrior();
+
+        spiderman.setHp(100);
+        spiderman.setName("SPiderman");
+        spiderman.setSpeed(20);
+
+        batman.setHp(103);
+        batman.setName("Batman");
+        batman.setSpeed(15);
+
+        if (!spiderman.protect()) 
+            batman.attack(spiderman);
+
+        expect(spiderman.getHp()).toEqual(100)
+    })
+
+    it('can\'t protect', ()=>{
+        const spiderman = new Warrior();
+        const batman = new Warrior();
+
+        spiderman.setHp(100);
+        spiderman.setName("SPiderman");
+        spiderman.setSpeed(20);
+
+        batman.setHp(103);
+        batman.setName("Batman");
+        batman.setSpeed(15);
+
+        if (spiderman.protect()) 
+            batman.attack(spiderman);
+
+        expect(spiderman.getHp()).toEqual(95)
     })
 
 })
-
-// describe('Create DC Warrior', ()=>{
-//     it('should have 200 hp', ()=>{
-//         expect(new Dc().getHp()).toBe(200)
-//     })
-
-// })
