@@ -2,17 +2,16 @@ export class Warrior {
     hp:number
     speed: number
     name: string
-    damage:number
+    private readonly damage:number = 5
 
     getHp():number {
         return this.hp
     }
 
-    setHp(hp:number){
-        if(hp > 0){
-            this.hp = hp
-            return true
-        }
+    setHp(hp:number):boolean{
+        if(hp <= 0)
+            return false
+        this.hp = hp
         return true
     }
 
@@ -20,12 +19,11 @@ export class Warrior {
         return this.hp
     }
 
-    setSpeed(speed:number){
-        if(speed > 0){
-            this.speed = speed
-            return true
-        }
-        return false
+    setSpeed(speed:number):boolean{
+        if(speed <= 0)
+            return false
+        this.speed = speed
+        return true
     }
 
     getName():string {
@@ -37,14 +35,6 @@ export class Warrior {
         return this.name
     }
 
-    getDamage():number {
-        return this.damage
-    }
-
-    setDamage(dmg:number):number{
-        this.damage = dmg
-        return this.damage
-    }
 }
 
 

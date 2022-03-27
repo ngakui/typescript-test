@@ -1,41 +1,41 @@
 {
-  "name": "iimtest",
+  "name": "typescript-test",
   "version": "1.0.0",
-  "description": "TD test automatisation",
-  "scripts": {
-    "precompile": "rimraf app/**/*.js test/**/*.js",
-    "compile": "tsc",
-    "pretest": "rimraf app/**/*.js test/**/*.js",
-    "test": "jest --watch",
-    "start": "node test/golden-master-text-test.js"
+  "description": "",
+  "main": "jest.config.js",
+  "directories": {
+    "test": "test"
   },
-  "license": "MIT",
-  "private": true,
-  "devDependencies": {
+  "dependencies": {
     "@types/jest": "^27.4.1",
-    "@types/node": "~7.0.18",
+    "ansi-regex": "^5.0.1",
+    "ansi-styles": "^4.3.0",
+    "chalk": "^4.1.2",
+    "color-convert": "^2.0.1",
+    "color-name": "^1.1.4",
+    "diff-sequences": "^27.5.1",
+    "has-flag": "^4.0.0",
     "jest": "^27.5.1",
-    "nyc": "~11.0.3",
-    "rimraf": "~2.5.2",
-    "source-map-support": "0.5.9",
-    "ts-jest": "^27.1.3",
-    "ts-node": "~3.1.0",
-    "typescript": "~3.0.3"
+    "jest-diff": "^27.5.1",
+    "jest-get-type": "^27.5.1",
+    "jest-matcher-utils": "^27.5.1",
+    "pretty-format": "^27.5.1",
+    "react-is": "^17.0.2",
+    "supports-color": "^7.2.0",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
   },
-  "nyc": {
-    "extension": [
-      ".ts"
-    ],
-    "exclude": [
-      "**/*.d.ts",
-      "test/**"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "html",
-      "text"
-    ]
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngakui/typescript-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngakui/typescript-test/issues"
+  },
+  "homepage": "https://github.com/ngakui/typescript-test#readme"
 }
